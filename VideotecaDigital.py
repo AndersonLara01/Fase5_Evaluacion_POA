@@ -8,10 +8,13 @@ peliculas = { "titulo":["Robot salvaje", "Mortal Kombat", "Matilda", "Coraline",
 "genero":["Animación", "Acción", "Comedia", "Terror", "Acción", "Animación"]
 }
 
-print('''=============================================================
-|      Titulo     | Año lanzamiento | Calificación | Género |
-|	          |		    |		   |	    |
-''')
+print('''==================================================================
+|       Titulo      | Año lanzamiento | Calificación |   Género  |
+==================================================================''')
+
+for i in zip(peliculas["titulo"], peliculas["añoLanzamiento"], peliculas["calificacion"], peliculas["genero"]):
+    print(f'''| {i[0]:<17} | {i[1]:<15} | {i[2]:<12} | {i[3]:<9} |
+|___________________|_________________|______________|___________|''')
 
 def popularReciente():
     resultado = []
