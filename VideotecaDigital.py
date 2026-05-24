@@ -47,16 +47,21 @@ def matrizVacia():
         while True:
             try:
                 año = int(input("Ingrese el año de lanzamiento: "))
-                if año <= 1900 or año >= 2026:
-                    print("Ingrese un año superior a 1900 e inferior a 2026")
+                if año < 1895 or año > 2026:
+                    print("Ingrese un año superior a 1894 e inferior a 2027")
                 else:
                     break
             except ValueError:
                 print("Ingrese un año de lanzamiento valido")
-        calificacion = float(input("Ingrese la calificación(1-10): "))
-        while calificacion < 1 or calificacion > 10:
-            print("Debe escoger una calificación entre 1 y 10")
-            calificacion = float(input("Ingrese una calificación valida: "))
+        while True:
+            try:
+                calificacion = float(input("Ingrese la calificación(1-10): "))
+                if calificacion < 1 or calificacion > 10:
+                    print("Debe escoger una calificación entre 1 y 10")      
+                else:
+                    break      
+            except ValueError:
+                print("Ingrese una calificación valida")
         genero = input("Ingrese el genero: ")
         espaciosVacios["titulos"].append(titulo)
         espaciosVacios["añoLanzamiento"].append(año)
