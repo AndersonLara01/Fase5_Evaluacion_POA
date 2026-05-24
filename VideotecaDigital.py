@@ -40,10 +40,24 @@ def matrizVacia():
     espaciosVacios = { "titulos":[], "añoLanzamiento":[], "calificaciones":[], "generos":[] }
     filas = int(input("Cantidad de titulos que desea ingresar: "))
     for i in range(filas):
-        titulo = input("Ingrese el título de la película: ")
-        año = input("Ingrese el año de lanzamiento: ")
-        calificacion = float(input("Ingrese la calificación: "))
-        genero = input("Ingrese el género: ")
+        titulo = input("Ingrese el título de la película: ").strip()
+        while titulo == "":
+            print("El titulo no debe estar vacio")
+            titulo = input("Ingrese un titulo valido: ").strip()
+        while True:
+            try:
+                año = int(input("Ingrese el año de lanzamiento: "))
+                if año <= 1900 or año >= 2026:
+                    print("Ingrese un año superior a 1900 e inferior a 2026")
+                else:
+                    break
+            except ValueError:
+                print("Ingrese un año de lanzamiento valido")
+        calificacion = float(input("Ingrese la calificación(1-10): "))
+        while calificacion < 1 or calificacion > 10:
+            print("Debe escoger una calificación entre 1 y 10")
+            calificacion = float(input("Ingrese una calificación valida: "))
+        genero = input("Ingrese el genero: ")
         espaciosVacios["titulos"].append(titulo)
         espaciosVacios["añoLanzamiento"].append(año)
         espaciosVacios["calificaciones"].append(calificacion)
