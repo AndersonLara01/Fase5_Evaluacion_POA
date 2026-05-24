@@ -17,8 +17,7 @@ def mostrarMenu():
         print("Programa finalizado...")
         exit()
     else:
-        print("Opción no válida. Intente nuevamente.")
-        mostrarMenu()
+        print("Ingrese una opción valida")
     mostrarMenu()
 
 peliculas = {"titulos":["Robot salvaje", "Mortal Kombat", "Matilda", "Coraline", "Anabelle", "Godzilla vs Kong","Enredados"], "añoLanzamiento":[2024, 2021, 1996, 2009, 2014, 2021, 2010],
@@ -32,13 +31,13 @@ def matrizEjemplo():
 ==================================================================''')
 
     for i in zip(peliculas["titulos"], peliculas["añoLanzamiento"], peliculas["calificaciones"], peliculas["generos"]):
-        print(f'''| {i[0]:<17} | {i[1]:<15} | {i[2]:<12} | {i[3]:<9} |
+        print(f'''| {i[0]:^17} | {i[1]:^15} | {i[2]:^12} | {i[3]:^9} |
 |___________________|_________________|______________|___________|''')
     popularReciente(peliculas)
 
 def matrizVacia():
     espaciosVacios = { "titulos":[], "añoLanzamiento":[], "calificaciones":[], "generos":[] }
-    filas = int(input("Cantidad de titulos que desea ingresar: "))
+    filas = int(input("Cantidad de títulos que desea ingresar: "))
     for i in range(filas):
         titulo = input("\nIngrese el título de la película: ").strip()
         while titulo == "":
@@ -62,17 +61,17 @@ def matrizVacia():
                     break      
             except ValueError:
                 print("Ingrese una calificación valida")
-        genero = input("Ingrese el genero: ")
+        genero = input("Ingrese el género: ")
         espaciosVacios["titulos"].append(titulo)
         espaciosVacios["añoLanzamiento"].append(año)
         espaciosVacios["calificaciones"].append(calificacion)
         espaciosVacios["generos"].append(genero)
-    print('''==================================================================
-|       Titulo      | Año lanzamiento | Calificación |   Género  |
-==================================================================''')
+    print('''========================================================================
+|          Titulo         | Año lanzamiento | Calificación |   Género  |
+========================================================================''')
     for i in zip(espaciosVacios["titulos"], espaciosVacios["añoLanzamiento"], espaciosVacios["calificaciones"], espaciosVacios["generos"]):
-        print(f'''| {i[0]:<17} | {i[1]:<15} | {i[2]:<12} | {i[3]:<9} |
-|___________________|_________________|______________|___________|''')
+              print(f'''| {i[0]:^23} | {i[1]:^15} | {i[2]:^12} | {i[3]:^9} |
+|_________________________|_________________|______________|___________|''')
     popularReciente(espaciosVacios)
 
 def popularReciente(dic=None):
@@ -80,12 +79,12 @@ def popularReciente(dic=None):
     for titulo, calificacion, año in zip(dic.get("titulos", []), dic.get("calificaciones", []), dic.get("añoLanzamiento", [])):
         if calificacion >= 7 and año >= 2020:
             resultado.append(titulo)
-    print("\nSe consideran populares las peliculas con una calificación >= 7 y del año 2020 en adelante")
-    print("\n------Peliculas populares y recientes-----")
+    cantidad = len(resultado)
+    print("\nSe considera popular los títulos con una calificación >= 7 y del año 2020 en adelante")
+    print(f"\n----Títulos populares y recientes: {cantidad}----")
     if not resultado:
-        print("No hay recientes y populares")      
+        print("No hay títulos recientes y populares")      
     else: 
         for i in resultado:
             print("-", i)   
-    
 mostrarMenu()
